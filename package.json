@@ -10,7 +10,12 @@
   },
   "author": "Rodrigo Souza Mendonça <rodrigo.smendonca@gmail.com>",
   "apidoc": {
-    "name": "Documentação - Bootcamp API"
+    "name": "Documentação - Bootcamp API",
+    "template": {
+      "forceLanguage": "pt_br",
+      "withCompare": false,
+      "withGenerator": false
+    }
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
