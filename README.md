@@ -8,3 +8,4 @@ API de gestão de tarefas
 * Acessar o diretório do projeto: `cd bootcamp-api`
 * Instalar as dependências: `npm install`
 * Inicializar o servidor: `npm start`
+* Acessar a documentação: [Documentação - Bootcamp API](https://localhost:3000/apidoc/)
