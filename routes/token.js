@@ -28,25 +28,36 @@ module.exports = app => {
     body('password', 'Required field').exists(),
     body('password', 'Invalid password').trim().isLength({ min: 8, max: 12 })
   ], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const user = await Users.findOne({
-      where: {
-        email: req.body.email
+    try {
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
       }
-    });
 
-    if (user) {
-      if (Users.isPassword(user.password, req.body.password)) {
-        res.json({
-          token: jwt.encode(user, config.jwtSecret)
-        });
+      const user = await Users.findOne({
+        where: {
+          email: req.body.email
+        }
+      });
+
+      const payload = {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      };
+
+      if (user) {
+        if (Users.isPassword(user.password, req.body.password)) {
+          res.json({
+            token: jwt.encode(payload, config.jwtSecret)
+          });
+        }
+      } else {
+        res.sendStatus(401);
       }
-    } else {
-      res.sendStatus(401);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ msg: 'Unexpected error' });
     }
   });
 };

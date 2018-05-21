@@ -39,7 +39,7 @@ module.exports = app => {
 
         res.json(tasks);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
         res.status(500).json({ msg: 'Unexpected error' });
       }
     })
@@ -91,7 +91,7 @@ module.exports = app => {
 
         res.json(task);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
         res.status(500).json({ msg: 'Unexpected error' });
       }
     });
@@ -145,7 +145,7 @@ module.exports = app => {
           res.sendStatus(404);
         }
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
         res.status(500).json({ msg: 'Unexpected error' });
       }
     })
@@ -189,7 +189,7 @@ module.exports = app => {
 
         res.sendStatus(204);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
         res.status(500).json({ msg: 'Unexpected error' });
       }
     })
@@ -222,7 +222,7 @@ module.exports = app => {
 
         res.sendStatus(204);
       } catch (error) {
-        console.error(error.message);
+        console.error(error);
         res.status(500).json({ msg: 'Unexpected error' });
       }
     });
