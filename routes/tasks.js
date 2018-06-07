@@ -83,7 +83,7 @@ module.exports = app => {
         let task = matchedData(req);
         task.user_id = req.user.id;
 
-        task = await Tasks.create(task)
+        task = await Tasks.create(task);
 
         task = await Tasks.findById(task.id, {
           attributes: ['id', 'title', 'done', 'updated_at', 'created_at']
