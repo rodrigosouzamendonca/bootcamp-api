@@ -35,11 +35,11 @@ module.exports = app => {
      */
     .post([
       body('name', 'Required field').exists(),
-      body('name', 'Invalid length').isLength({ min: 1, max: 255 }).trim(),
+      body('name', 'Invalid length').trim().isLength({ min: 1, max: 255 }),
       body('email', 'Required field').exists(),
       body('email', 'Invalid email').isEmail(),
       body('password', 'Required field').exists(),
-      body('password', 'Invalid email').isLength({ min: 1, max: 12 }).trim(),
+      body('password', 'Invalid length').trim().isLength({ min: 1, max: 12 }),
     ], async (req, res) => {
       try {
         const errors = validationResult(req);

@@ -72,7 +72,7 @@ module.exports = app => {
      */
     .post([
       body('title', 'Required field').exists(),
-      body('title', 'Invalid length').isLength({ min: 1, max: 255 }).trim()
+      body('title', 'Invalid length').trim().isLength({ min: 1, max: 255 })
     ], async (req, res) => {
       try {
         const errors = validationResult(req);

@@ -26,7 +26,7 @@ module.exports = app => {
     body('email', 'Required field').exists(),
     body('email', 'Invalid email').isEmail(),
     body('password', 'Required field').exists(),
-    body('password', 'Invalid password').trim().isLength({ min: 8, max: 12 })
+    body('password', 'Invalid length').trim().isLength({ min: 8, max: 12 })
   ], async (req, res) => {
     try {
       const errors = validationResult(req);
